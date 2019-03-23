@@ -1,5 +1,7 @@
 var wins= 0,
     losses= 0,
+    posD=0,
+    posW=0,
     guessesRemaining= 12,
     alreadyGuessed= "",
     currentWord,
@@ -13,29 +15,94 @@ var winsText=document.getElementById("wins"),
     alreadyGuessedText=document.getElementById('alreadyGuessed')
 
 var wordArray= ['fish','dolphin','shark']
-    dashArray= ['____','_______','_____']
+    dashArray= ['----','-------','-----']
 
 
-for (var i=0; i <dashArray.length;i++){
-    wordDashText.textContent= dashArray[i]
-    for(var j=0; j < wordArray.length; j++){
-        if(wordArray[j].indexOf('_') <= 0){
-            wins+=1
-            winsText.textContent= wins
-            break;
-        }
-        if(guessesRemaining === 0){
-            losses+= 1
-            lossesText.textContent= losses
-            break;
-        }
-        document.onkeyup=function(event){
-            alreadyGuessedText.textContent="none"
-            userKey= event.key.toLowerCase()
-            if(wordArray[j].indexOf(userKey) >= 0){
-                var index= wordArray[j].indexOf(userKey)
-                charAt
-            }
-        }
+var game={
+    won: function(){
+        wins+=1
+        winsText.textContent= wins
+        posD+=1
+        dashArray.textContent=dashArray[posD]
+        posW+=1
+    },
+
+    lost: function(){
+        losses+=1
+        lossesText.textContent= losses
+        posD+=1
+        dashArray.textConent=dashArray[posD]
+        posW+=1
+    },
+
+    gotOne: function(){
+        var ind= wordArray[posW].indexOf(userKey)
+        charAt(ind).dashArray[posD]=userKey
+        wordDashText.textContent= dashArray[posD]
+    },
+
+    guessedAlready: function(){
+        alreadyGuessedText.textContent = "Already Guessed!!!"
+    },
+
+    fail: function(){
+        guessesRemaining-=1
+        guessesRemainingText.value= guessesRemaining
+        alreadyGuessed+= userKey
+        alreadyGuessedText.textContent = alreadyGuessed
     }
 }
+
+
+document.onkeyup=function(event){
+    userKey=event.key
+    if(dashArray[posD].indexOf('-')<0){
+        game.won()
+    }else if(guessesRemaining === 0){
+        game.lost()
+    }else if(dashArray[posD].indexOf(userKey) >= 0){
+        game.guessedAlready()
+    }else{
+        game.fail()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
