@@ -3,7 +3,7 @@ var wins= 0,
     posD=0,
     posW=0,
     guessesRemaining= 12,
-    alreadyGuessed= "",
+    lettersGuessed= "",
     currentWord,
     userKey
 
@@ -12,10 +12,11 @@ var winsText=document.getElementById("wins"),
     lossesText=document.getElementById('losses'),
     wordDashText=document.getElementById('wordDash'),
     guessesRemainingText=document.getElementById('guessesRemaining'),
+    lettersGuessedText=document.getElementById('lettersGuessed')
     alreadyGuessedText=document.getElementById('alreadyGuessed')
 
 var wordArray= ['fish','dolphin','shark']
-    dashArray= ['----','-------','-----']
+    dashArray= ['xxxx','-------','-----']
 
 
 var game={
@@ -37,7 +38,8 @@ var game={
 
     gotOne: function(){
         var ind= wordArray[posW].indexOf(userKey)
-        charAt(ind).dashArray[posD]=userKey
+        setCharAt(dashArray[posD], ind, userKey)
+        
         wordDashText.textContent= dashArray[posD]
     },
 
@@ -47,21 +49,24 @@ var game={
 
     fail: function(){
         guessesRemaining-=1
-        guessesRemainingText.value= guessesRemaining
-        alreadyGuessed+= userKey
-        alreadyGuessedText.textContent = alreadyGuessed
+        guessesRemainingText.textContent= guessesRemaining
+        lettersGuessed+= userKey
+        lettersGuessedText.textContent = lettersGuessed
     }
 }
 
 
 document.onkeyup=function(event){
+    wordDashText.textContent= dashArray[posD]
     userKey=event.key
-    if(dashArray[posD].indexOf('-')<0){
+    if(dashArray[posD].indexOf('x')<0){
         game.won()
     }else if(guessesRemaining === 0){
         game.lost()
     }else if(dashArray[posD].indexOf(userKey) >= 0){
         game.guessedAlready()
+    }else if(wordArray[posW].indexOf(userKey)>=0){
+        game.gotOne()
     }else{
         game.fail()
     }
