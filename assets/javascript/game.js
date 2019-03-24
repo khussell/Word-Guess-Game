@@ -12,42 +12,54 @@ var winsText=document.getElementById("wins"),
     lossesText=document.getElementById('losses'),
     wordDashText=document.getElementById('wordDash'),
     guessesRemainingText=document.getElementById('guessesRemaining'),
-    lettersGuessedText=document.getElementById('lettersGuessed')
-    alreadyGuessedText=document.getElementById('alreadyGuessed')
+    lettersGuessedText=document.getElementById('lettersGuessed'),
+    alreadyGuessedText=document.getElementById('alreadyGuessed'),
+    introText=document.getElementById('intro')
 
-var wordArray= ['fish','dolphin','shark']
-    dashArray= ['xxxx','-------','-----']
+var wordArray= ['fish','dolphin','shark'],
+    dashArray= ['----','xxxxxxx','xxxxx']
+
+
+wordDashText.textContent= dashArray[posD]
 
 
 var game={
     won: function(){
+        
         wins+=1
         winsText.textContent= wins
         posD+=1
-        dashArray.textContent=dashArray[posD]
+        dashArrayText.textContent=dashArray[posD]
         posW+=1
+        guessesRemainingText.textContent=12
+        lettersGuessedText.textContent=''
+        
     },
 
     lost: function(){
+        introText.textContent= "Press any key to try a different word!"
+        guessesRemaining=0
+        guessesRemainingText.textContent= guessesRemaining
         losses+=1
         lossesText.textContent= losses
-        posD+=1
-        dashArray.textConent=dashArray[posD]
-        posW+=1
+        posD += 1
+        posW += 1
+        
+        
+        
     },
 
     gotOne: function(){
         var ind= wordArray[posW].indexOf(userKey)
-        var pleaseWork= dashArray.split('')
-        pleaseWork[posD][ind]=userKey
-        dashArray= pleaseWork.join('')
-        
-        
+        var pleaseWork= dashArray[posD]
+        var help= pleaseWork.split('')
+        help[ind]= userKey
+        dashArray[posD]=help.join('')
         wordDashText.textContent= dashArray[posD]
     },
 
     guessedAlready: function(){
-        alreadyGuessedText.textContent = "Already Guessed!!!"
+        introText.textContent = "Already Guessed!!!"
     },
 
     fail: function(){
@@ -55,23 +67,43 @@ var game={
         guessesRemainingText.textContent= guessesRemaining
         lettersGuessed+= userKey
         lettersGuessedText.textContent = lettersGuessed
+    },
+
+    restartWord: function(){
+        guessesRemaining=12
+        guessesRemainingText.textContent= guessesRemaining
+        lettersGuessed= ''
+        lettersGuessedText.textContent= lettersGuessed
+        dashArrayText.textContent=dashArray[posD]
+    
     }
 }
+
+
 
 
 document.onkeyup=function(event){
     wordDashText.textContent= dashArray[posD]
     userKey=event.key
-    if(dashArray[posD].indexOf('x')<0){
-        game.won()
-    }else if(guessesRemaining === 0){
+    introText.textContent= "Press a letter to guess!"
+    var dashInd=dashArray[posD].indexOf(userKey)
+    var wordInd= wordArray[posW].indexOf(userKey)
+
+    if(guessesRemaining === 0){
+        game.restartWord()
+    }
+
+    if(guessesRemaining === 1 && wordInd < 0){
         game.lost()
-    }else if(dashArray[posD].indexOf(userKey) >= 0){
+    }else if(dashInd >= 0 || lettersGuessed.indexOf(userKey)>=0){
         game.guessedAlready()
-    }else if(wordArray[posW].indexOf(userKey)>=0){
+    }else if(wordInd >=0){
         game.gotOne()
     }else{
         game.fail()
+    }
+    if(dashArray[posD].indexOf('-')<0){
+        game.won()
     }
 }
 
