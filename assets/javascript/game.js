@@ -38,7 +38,10 @@ var game={
 
     gotOne: function(){
         var ind= wordArray[posW].indexOf(userKey)
-        setCharAt(dashArray[posD], ind, userKey)
+        var pleaseWork= dashArray.split('')
+        pleaseWork[posD][ind]=userKey
+        dashArray= pleaseWork.join('')
+        
         
         wordDashText.textContent= dashArray[posD]
     },
