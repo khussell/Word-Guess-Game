@@ -22,22 +22,41 @@ var wordArray= ['fish','dolphin','shark'],
 
 
 
+ wordDashText.textContent= dashArray[posD]
+
+
+
+
+    
+
+
+
 var game={
     won: function(){
         
         wins+=1
         winsText.textContent= wins
         posD+=1
-        wordDashText.textContent=dashArray[posD]
+        
         posW+=1
         guessesRemainingText.textContent=12
-        lettersGuessedText.textContent=''
+        lettersGuessed=''
+        lettersGuessedText.textContent=lettersGuessed
+        
         introText.textContent="Great! Press any key for next word!"
+        if(introText.textContent === "Great! Press any key for next word!"){
+            document.onkeydown=function(){
+            userKey= ''
+            wordDashText.textContent=dashArray[posD]
+            introText.textContent="Press a letter to guess"
+            break;
+        }
+        }
         
     },
 
     lost: function(){
-        introText.textContent= "Press any key to try a different word!"
+        introText.textContent= "Too bad, press any key to try a different word!"
         guessesRemaining=0
         guessesRemainingText.textContent= guessesRemaining
         losses+=1
@@ -83,10 +102,9 @@ var game={
 }
 
 
-
-
 document.onkeyup=function(event){
-    
+
+
 wordDashText.textContent= dashArray[posD]
     userKey=event.key
     introText.textContent= "Press a letter to guess!"
@@ -105,12 +123,6 @@ wordDashText.textContent= dashArray[posD]
     }
     
 }
-
-
-
-
-
-
 
 
 
