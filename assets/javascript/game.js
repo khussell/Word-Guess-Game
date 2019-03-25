@@ -16,8 +16,8 @@ var winsText=document.getElementById("wins"),
     alreadyGuessedText=document.getElementById('alreadyGuessed'),
     introText=document.getElementById('intro')
 
-var wordArray= ['fish','dolphin','shark'],
-    dashArray= ['----','-------','-----']
+var wordArray= ['fish','dolphin','shark','clownfish','shrimp','whale','coral','crab'],
+    dashArray= ['----','-------','-----','---------','------','-----','-----','----']
 
 
 
@@ -25,7 +25,8 @@ var wordArray= ['fish','dolphin','shark'],
  wordDashText.textContent= dashArray[posD]
 
 
-
+//photos
+var whalePhoto= document.getElementById('whale')
 
     
 
@@ -39,19 +40,16 @@ var game={
         posD+=1
         
         posW+=1
-        guessesRemainingText.textContent=12
+        guessesRemaining=12
+        guessesRemainingText.textContent=guessesRemaining
         lettersGuessed=''
         lettersGuessedText.textContent=lettersGuessed
         
         introText.textContent="Great! Press any key for next word!"
-        if(introText.textContent === "Great! Press any key for next word!"){
-            document.onkeydown=function(){
-            userKey= ''
-            wordDashText.textContent=dashArray[posD]
-            introText.textContent="Press a letter to guess"
-            break;
-        }
-        }
+        this.showPhoto()
+        
+        
+        
         
     },
 
@@ -98,6 +96,12 @@ var game={
         lettersGuessedText.textContent= lettersGuessed
         wordDashText.textContent=dashArray[posD]
     
+    },
+
+    showPhoto: function(){
+        if(posW === 6){
+            whalePhoto.style.display= "block"
+        }
     }
 }
 
@@ -110,7 +114,7 @@ wordDashText.textContent= dashArray[posD]
     introText.textContent= "Press a letter to guess!"
    
 
-    if(guessesRemaining === 0){
+    if(guessesRemaining === 0|| introText.textContent === "Great! Press any key for next word!"){
         game.restartWord()
     }else if(guessesRemaining === 1 && wordArray[posW].indexOf(userKey) < 0){
         game.lost()
