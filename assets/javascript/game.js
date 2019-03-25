@@ -17,10 +17,9 @@ var winsText=document.getElementById("wins"),
     introText=document.getElementById('intro')
 
 var wordArray= ['fish','dolphin','shark'],
-    dashArray= ['----','xxxxxxx','xxxxx']
+    dashArray= ['----','-------','-----']
 
 
-wordDashText.textContent= dashArray[posD]
 
 
 var game={
@@ -29,10 +28,11 @@ var game={
         wins+=1
         winsText.textContent= wins
         posD+=1
-        dashArrayText.textContent=dashArray[posD]
+        wordDashText.textContent=dashArray[posD]
         posW+=1
         guessesRemainingText.textContent=12
         lettersGuessedText.textContent=''
+        introText.textContent="Great! Press any key for next word!"
         
     },
 
@@ -56,6 +56,9 @@ var game={
         help[ind]= userKey
         dashArray[posD]=help.join('')
         wordDashText.textContent= dashArray[posD]
+        if(dashArray[posD].match(/-/g) === null){
+            this.won()
+        }
     },
 
     guessedAlready: function(){
@@ -74,7 +77,7 @@ var game={
         guessesRemainingText.textContent= guessesRemaining
         lettersGuessed= ''
         lettersGuessedText.textContent= lettersGuessed
-        dashArrayText.textContent=dashArray[posD]
+        wordDashText.textContent=dashArray[posD]
     
     }
 }
@@ -83,28 +86,24 @@ var game={
 
 
 document.onkeyup=function(event){
-    wordDashText.textContent= dashArray[posD]
+    
+wordDashText.textContent= dashArray[posD]
     userKey=event.key
     introText.textContent= "Press a letter to guess!"
-    var dashInd=dashArray[posD].indexOf(userKey)
-    var wordInd= wordArray[posW].indexOf(userKey)
+   
 
     if(guessesRemaining === 0){
         game.restartWord()
-    }
-
-    if(guessesRemaining === 1 && wordInd < 0){
+    }else if(guessesRemaining === 1 && wordArray[posW].indexOf(userKey) < 0){
         game.lost()
-    }else if(dashInd >= 0 || lettersGuessed.indexOf(userKey)>=0){
+    }else if(dashArray[posD].indexOf(userKey) >= 0 || lettersGuessed.indexOf(userKey)>=0){
         game.guessedAlready()
-    }else if(wordInd >=0){
+    }else if(wordArray[posW].indexOf(userKey) >=0){
         game.gotOne()
     }else{
         game.fail()
     }
-    if(dashArray[posD].indexOf('-')<0){
-        game.won()
-    }
+    
 }
 
 
