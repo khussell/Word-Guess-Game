@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    <title>Word Guess Game</title>
+    <title>Sea Word Guess Game</title>
+    <iframe width="0" height="0" src="http://youtuberepeater.com/watch?v=E7qRkUYu580&name=30+min+relaxing+ocean+waves+high+quality+sound+no+music+HD+video+of+a+beautiful+misty+beach" frameborder="0" allowfullscreen></iframe>
 </head>
 <body>
 <section class="game">
     <div class="container">
-        <h1>Word Guess Game</h1>
-        <h2 id="intro">Press a letter to guess!</h2>
-        <p>Wins:</p>
-        <p id="wins"></p>
-        <p>Fails:</p>
-        <p id="losses"></p>
-        <p>Current Word:</p>
-        <p id="wordDash"></p>
-        <p>Number of Guesses Remaining:</p>
-        <p id="guessesRemaining">12</p>
-        <p>Letters Guessed:</p>
-        <p id="lettersGuessed">none</p>
-        <p id="alreadyGuessed"></p>
-        <img id="whale" src="http://pngimg.com/uploads/whale/whale_PNG19253.png" height="150px">
-        <img id="dolphin" src="assets/images/dolphin1.png" height="250px">
+    <div class="words">
+        <div class="head">
+            <h1>Sea Word Guess Game</h1>
+            <h2 id="intro">Press a letter to guess!</h2>
+        </div>
+        <div class="score">
+            <p>Wins:</p>
+            <p id="wins"></p>
+            <p>Fails:</p>
+            <p id="losses"></p>
+            <p>Current Word:</p>
+            <p id="wordDash"></p>
+        </div>
+        <div class="guesses">
+            <p>Number of Guesses Remaining:</p>
+            <p id="guessesRemaining">12</p>
+            <p>Letters Guessed:</p>
+            <p id="lettersGuessed">none</p>
+            <p id="alreadyGuessed"></p>
+        </div>
+        </div>
+        <div class="pics">
+            <img id="whale" src="assets/images/whale.png" height="350px">
+            <img id="dolphin" src="assets/images/dolphin1.png" height="250px">
+            <img id="shark" src="assets/images/shark.png" height="200px">
+            <img id="turtle" src="assets/images/turtle.png" height="220px">
+            <img id="seahorse" src="assets/images/seahorse.png" height="180px">
+            <img id="octopus" src="assets/images/octopus.png" height="120px">
+            <img id="jellyfish" src="assets/images/jellyfish.png" height="120px">
+        </div>
         <div class="bubbles">
             <img class="bubble bubble1" src="http://pngimg.com/uploads/soap_bubbles/soap_bubbles_PNG76.png" height="30px">
             <img class="bubble bubble2" src="http://pngimg.com/uploads/soap_bubbles/soap_bubbles_PNG76.png" height="30px">
@@ -50,12 +67,8 @@
 </section>
 
 
-
-
-
-
-
-
   <script src="assets/javascript/game.js"></script>
+
+
 </body>
 </html>

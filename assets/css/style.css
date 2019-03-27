@@ -1,43 +1,78 @@
 body{
-    background-image: url(../images/2076193.jpg)
+    height: 800px;
+    background-image: url(../images/2076193.jpg);   
 }
-
 
 .container{
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Cinzel', serif;
     font-weight: bold;
     font-size: 20px;
     position: relative;
-    height: 650px;
-    text-shadow: 2px 2px  black;
+    height: 800px;
+    text-shadow: 3px 1px  black;
+    letter-spacing: 2px;
 }
+.head{font-size: 16px}
 
-#wordDash{
-    font-size: 40px;
+.score,
+.guesses{font-size: 14px}
 
-}
+.words{z-index: 2}
 
+#wordDash{font-size: 40px}
 
 #whale{
     position: absolute;
-    top:20px;
+    top:-80px;
     left: 20px;
-    display: none;
+    display: none;    
 }
 
 #dolphin{
     position: fixed;
     bottom: 0px;
     left: 100px;
-    display: none;
-
+   display: none;
 }
 
+#octopus{
+    position: fixed;
+    bottom: 0;
+    left: 650px;
+    display: none;  
+}
+
+#shark{
+    position: absolute;
+    top: 0px;
+    left: 1050px;
+    display: none;   
+}
+
+#jellyfish{
+    position: absolute;
+    top: 240px;
+    left: 300px;
+    display: none;    
+}
+
+#seahorse{
+    position: absolute;
+    top: 240px;
+    left: 1000px;
+    display: none;
+}
+
+#turtle{
+    position: absolute;
+    left: 1200px;
+    top: 420px;
+    display: none;   
+}
 
 .bubble1{
-
     position:absolute;
     bottom: 20px;
     right: 400px;
@@ -70,17 +105,77 @@ body{
     left: 400px;
 }
 
+.bubble7{
+
+    position:absolute;
+    bottom: 20px;
+    right: 180px;
+}
+
+.bubble8{
+    position: absolute;
+    bottom: 40px;
+    right: 80px;
+}
+.bubble9{
+    position: absolute;
+    bottom: 100px;
+    right: 360px;
+}
+.bubble10{
+    position: absolute;
+    bottom: 50px;
+    left: 440x;
+}
+.bubble11{
+    position: absolute;
+    bottom: 100px;
+    left: 650px;
+}
+
+.bubble12{
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+}
+
+.bubble14{
+    position:absolute;
+    bottom: 0px;
+    right: 250px;
+}
+
+.bubble15{
+    position: absolute;
+    bottom: 80px;
+    right: 550px;
+}
+.bubble16{
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+}
+.bubble17{
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+}
+.bubble18{
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+}
+
 .bubble{
     position: absolute;
-    animation-name: floating;
+    animation-name: up;
         animation-duration: 20s;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
 }
 
-@keyframes floating{
+@keyframes up{
     from {transform: translate(0, 0px);}
-        50% {transform: translate(0, -800px);}
-        
-        to {transform: translate(0, -800px);} 
+        50% {transform: translate(0, -1100px);} 
+        to {transform: translate(0, -1100px);} 
 }
