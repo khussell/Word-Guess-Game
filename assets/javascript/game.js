@@ -17,7 +17,8 @@ var winsText=document.getElementById("wins"),
     introText=document.getElementById('intro')
 
 var wordArray= ['fish','dolphin','shark','clownfish','shrimp','whale','coral','crab'],
-    dashArray= ['----','-------','-----','---------','------','-----','-----','----']
+    dashArray= ['----','-------','-----','---------','------','-----','-----','----'],
+    lettersArray= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
 
@@ -27,6 +28,7 @@ var wordArray= ['fish','dolphin','shark','clownfish','shrimp','whale','coral','c
 
 //photos
 var whalePhoto= document.getElementById('whale')
+var dolphinPhoto= document.getElementById('dolphin')
 
     
 
@@ -40,10 +42,7 @@ var game={
         posD+=1
         
         posW+=1
-        guessesRemaining=12
-        guessesRemainingText.textContent=guessesRemaining
-        lettersGuessed=''
-        lettersGuessedText.textContent=lettersGuessed
+    
         
         introText.textContent="Great! Press any key for next word!"
         this.showPhoto()
@@ -95,12 +94,15 @@ var game={
         lettersGuessed= ''
         lettersGuessedText.textContent= lettersGuessed
         wordDashText.textContent=dashArray[posD]
-    
+        introText.textContent= "Press a letter to guess!"
+        
     },
 
     showPhoto: function(){
         if(posW === 6){
             whalePhoto.style.display= "block"
+        }else if(posW === 2){
+            dolphinPhoto.style.display="block"
         }
     }
 }
@@ -108,12 +110,10 @@ var game={
 
 document.onkeyup=function(event){
 
-
-wordDashText.textContent= dashArray[posD]
-    userKey=event.key
-    introText.textContent= "Press a letter to guess!"
-   
-
+userKey=event.key.toLowerCase()  
+  wordDashText.textContent= dashArray[posD]
+if(userKey.length === 1){
+    
     if(guessesRemaining === 0|| introText.textContent === "Great! Press any key for next word!"){
         game.restartWord()
     }else if(guessesRemaining === 1 && wordArray[posW].indexOf(userKey) < 0){
@@ -125,7 +125,7 @@ wordDashText.textContent= dashArray[posD]
     }else{
         game.fail()
     }
-    
+}   
 }
 
 
