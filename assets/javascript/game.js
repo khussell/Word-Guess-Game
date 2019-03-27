@@ -157,6 +157,9 @@ wordDashText.textContent= dashArray[posD]
 document.onkeyup=function(event){
   userKey=event.key.toLowerCase()  
   wordDashText.textContent= dashArray[posD]
+  if(introText.textContent === "Already Guessed!!!"){
+      introText.textContent= "Press a letter to guess!"
+  }
   if(guessesRemaining === 0|| introText.textContent === "Great! Press ENTER for next word!"){
         game.restartWord()
    } 
