@@ -6,7 +6,8 @@ var wins= 0,
     guessesRemaining= 12,
     lettersGuessed= "",
     currentWord,
-    userKey
+    userKey,
+    mySound
 
 //connecting to html
 var winsText=document.getElementById("wins"),
@@ -19,12 +20,12 @@ var winsText=document.getElementById("wins"),
 
 //arrays
 var wordArray= ['octopus','dolphin','shark','jellyfish','turtle','whale','seahorse','coral'],
-    dashArray= ['-------','-------','-----','---------','------','-----','--------','-----'],
+    dashArray= ['_______','_______','_____','_________','______','_____','________','_____'],
     lettersArray= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
 
-
+    
 
 
 
@@ -90,7 +91,7 @@ var game={
         }
         dashArray[posD]=dashSplit.join('')
         wordDashText.textContent= dashArray[posD]
-        if(dashArray[posD].match(/-/g) === null){
+        if(dashArray[posD].match(/_/g) === null){
            this.won()
         }    
     },
@@ -132,6 +133,8 @@ var game={
             whalePhoto.style.zIndex= 1
         }else if(posW === 2){
             dolphinPhoto.style.display="block"
+            mySound= new Audio("http://audiosoundclips.com/wp-content/uploads/2012/01/Dolphinsound.mp3")
+            mySound.play()
         }else if(posW === 1){
             octopusPhoto.style.display="block"
         }else if(posW === 3){

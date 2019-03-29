@@ -3,6 +3,24 @@ body{
     background-image: url(../images/2076193.jpg);   
 }
 
+audio{
+    height: 30px;
+    
+}
+
+.music{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    width: 295px;
+    position: absolute;
+    top: 40px;
+    font-weight: bold;
+    background-color:#f7f5f6;
+    padding: 5px;
+    border-radius: 5%;
+    font-size: 13px;
+    
+}
 .container{
     text-align: center;
     color: white;
@@ -21,7 +39,10 @@ body{
 
 .words{z-index: 2}
 
-#wordDash{font-size: 40px}
+#wordDash{
+    font-size: 40px;
+    letter-spacing: 13px;
+}
 
 #whale{
     position: absolute;
