@@ -3,22 +3,20 @@ body{
     background-image: url(../images/2076193.jpg);   
 }
 
-audio{
-    height: 30px;
-    
-}
+audio{height: 30px}
 
 .music{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
-    width: 295px;
+    width: 285px;
     position: absolute;
     top: 40px;
     font-weight: bold;
-    background-color:#f7f5f6;
+    background-color:#f1f3f4;
     padding: 5px;
     border-radius: 5%;
     font-size: 13px;
+    text-align: center;
     
 }
 .container{
